@@ -25,9 +25,10 @@ public class Main {
 
         // создание таблицы
         userService.createUsersTable();
+        System.out.println("Таблица users создана");
 
         // добавление пользователей
-        userService.saveUser("Иван", "Ивановский", (byte) 25);
+        userService.saveUser("Иван", "Иваныч", (byte) 25);
         userService.saveUser("Петр", "Петров", (byte) 30);
         userService.saveUser("Мария", "Сидорова", (byte) 28);
         userService.saveUser("Анна", "Кузнецова", (byte) 22);
@@ -39,9 +40,9 @@ public class Main {
         }
 
         // очистка таблицы
-        userService.cleanUsersTable();
+        // userService.cleanUsersTable();
 
         // удаление таблицы
-        userService.dropUsersTable();
+        // userService.dropUsersTable();
     }
 }
