@@ -10,7 +10,7 @@ public class Main {
 
         UserService userService = new UserServiceImpl();
 
-        // cоздание таблицы
+        // создание таблицы
         userService.createUsersTable();
         System.out.println("Таблица users создана");
 
