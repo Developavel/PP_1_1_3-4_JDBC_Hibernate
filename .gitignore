@@ -1,0 +1,25 @@
+# Maven
+target/
+.mvn/
+.mvn/wrapper/
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.settings/
+.project
+.classpath
+.metadata/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Database
+*.db
+*.sqlite
