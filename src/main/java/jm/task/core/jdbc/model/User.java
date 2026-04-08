@@ -3,10 +3,11 @@ package jm.task.core.jdbc.model;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 import java.util.Objects;
 
 @Table
-public class User {
+public class User { // Модель данных
     @Id
     private Long id;
 

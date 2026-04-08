@@ -2,17 +2,18 @@ package jm.task.core.jdbc.dao;
 
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDaoJDBCImpl implements UserDao {
+public class UserDaoJDBCImpl implements UserDao { // Реализация работы с БД через JDBC
     public UserDaoJDBCImpl() {
-
     }
 
     private void executeUpdate(String sql, QueryExecutor executor) {
@@ -68,7 +69,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void dropUsersTable() { // удаление таблицы
         executeUpdate("DROP TABLE IF EXISTS users",
                      (connection, sql) -> {
-                        try (Statement statement = connection.createStatement()){
+                        try (Statement statement = connection.createStatement()) {
                             statement.executeUpdate(sql);
                         }
                      });
@@ -78,11 +79,11 @@ public class UserDaoJDBCImpl implements UserDao {
     public void saveUser(String name, String lastName, byte age) { // добавление пользователя
         String sql = "INSERT INTO users (name, lastName, age) VALUES (?, ?, ?)";
         executeUpdate(sql, (connection, query) -> {
-            try (PreparedStatement pstmt = connection.prepareStatement(query)) {
-                pstmt.setString(1, name);
-                pstmt.setString(2, lastName);
-                pstmt.setByte(3, age);
-                pstmt.executeUpdate();
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setString(1, name);
+                preparedStatement.setString(2, lastName);
+                preparedStatement.setByte(3, age);
+                preparedStatement.executeUpdate();
             }
         });
         System.out.println("В таблицу users добавлен новый пользователь: " + name + " " + lastName + ", возраст " + age);
@@ -92,9 +93,9 @@ public class UserDaoJDBCImpl implements UserDao {
     public void removeUserById(long id) { // удаление по id
         String sql = "DELETE FROM users WHERE id = ?";
         executeUpdate(sql, (connection, query) -> {
-            try (PreparedStatement pstmt = connection.prepareStatement(query)) {
-                pstmt.setLong(1, id);
-                pstmt.executeUpdate();
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setLong(1, id);
+                preparedStatement.executeUpdate();
             }
         });
     }
